@@ -61,7 +61,8 @@ The call arguments are :
 ````
 
 > [!WARNING]
-> By default ``copy_crypt.sh`` is configured to use a dummy encryption backend. This does not encrypt anything!
+> By default ``copy_crypt.sh`` is configured as a dummy encryption backend. This does not encrypt anything!
+
 
 ## Certificate creation
 
@@ -70,14 +71,14 @@ From the root directory of this repository run ``make shell`` to enter the cert 
 Make targets are available for all artifacts created by this stack.
 Here is a list:
 
-| Target               | Description                                                           |
-|----------------------|-----------------------------------------------------------------------|
-| init                 | Initially create directory structure and ROOT CA                      |
-| clean                | Remove private keys                                                   |
-| lock                 | Encrypt sensitive files                                               |
-| certs/%.crt          | Sign CSR and generate certificate for domain                          |
-| certs/wildcard_%.crt | Sign CSR and generate wildcard certificate                            |
-| certs/%.pem          | Create combined PEM file with cert and CA cert (aka. full cert chain) |
+| Target               | Description                                                                                  |
+|----------------------|----------------------------------------------------------------------------------------------|
+| init                 | Initially create directory structure and ROOT CA                                             |
+| clean                | Encrypt and remove (plaintext) private keys (so they do not get persisted in the repository) |
+| lock                 | Encrypt sensitive files                                                                      |
+| certs/%.crt          | Sign CSR and generate certificate for domain                                                 |
+| certs/wildcard_%.crt | Sign CSR and generate wildcard certificate                                                   |
+| certs/%.pem          | Create combined PEM file with cert and CA cert (aka. full cert chain)                        |
 
 ````shell
 #Examples
@@ -100,7 +101,7 @@ make private/myhost.local.key
 During a certificate creation step a signing request is created.
 If you want to customize the signing request parameters, you can do so by creating the corresponding file in the ``csr`` directory.
 
-An exmaple can be found in `exmaples/app0.mgmt.local_req.cnf`.
+An example can be found in `exmaples/app0.mgmt.local_req.cnf`.
 This file is used to prepare a SSL certificate for a local PROXMOX hypervisor.
 
 If a prepared ``cnf`` file is found, it will be used instead of creating a new one.
@@ -109,7 +110,7 @@ A on the fly created ``cnf`` will be deleted (intermediate make build target)
 
 ## Certificate usage
 
-During ``make init`` the ROOT CA is created and stored in two places. The file ´´./rootCA.crt´´ can be added too the trusted CA store of your system.
+During ``make init`` the ROOT CA is created and stored in two places. The file ``./rootCA.crt`` can be added to the trusted CA store of your system.
 
 Any certificate creation like ``make certs/%.pem`` or ``make certs/%.crt`` will create the certificate and a corresponding private key.
 Those are to be placed in your webserver for TLS/SSL/HTTPS connections.
