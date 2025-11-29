@@ -1,7 +1,7 @@
 
 # Self Cert
 
-A tool set for creating self-signed certificates for SSL server hosting.
+A tool set for creating self-signed certificates for LAN SSL server hosting.
 
 ## Main Concepts
 
@@ -48,11 +48,9 @@ An example with the expected input and output value is provided in `copy_crypt.s
 A second example with ansilbe vault as possible backend is provided in `ansible_vault_crypt.sh`.
 The ansilbe vault backend assumes that you have ansilbe vault installed and configured.
 
-### Configuration
-
-Configure your choice for encryption in the file ``.env`` by setting the environment variable ``CRYPTO_BACKEND``.
+To configure your choice for encryption use the file ``.env`` and set the environment variable ``CRYPTO_BACKEND``.
 The value for ``CRYPTO_BACKEND`` is a relative path to a script that will be executed each time encryption/decryption is required.
-The call argument are : 
+The call arguments are : 
 
 ````shell
 ./your_shell_script.sh <MODE> <INPUT FILE> <OUTPUT FILE>
@@ -61,6 +59,9 @@ The call argument are :
 # INPUT FILE is the path to the file to encrypt/decrypt
 # OUTPUT FILE is the path to the output file
 ````
+
+> [!WARNING]
+> By default ``copy_crypt.sh`` is configured to use a dummy encryption backend. This does not encrypt anything!
 
 ## Certificate creation
 
