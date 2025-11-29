@@ -1,3 +1,7 @@
 
 # editor stuff
 .idea
+
+
+# private key (non-encrypted)
+private/*.key

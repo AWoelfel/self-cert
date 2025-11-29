@@ -1,0 +1,14 @@
+.include configs/common.cnf
+
+[ req ]
+default_bits        = 4096
+
+# MAIN CERTIFICATE AUTHORITY NAMING
+[ req_distinguished_name ]
+CN           = <CA AUTHORITY NAME>
+
+[ v3_ca ]
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always,issuer
+basicConstraints = critical, CA:true
+keyUsage = critical, digitalSignature, cRLSign, keyCertSign

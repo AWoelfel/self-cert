@@ -1,0 +1,13 @@
+.include configs/common.cnf
+
+[ req ]
+req_extensions      = req_ext
+
+[ req_ext ]
+subjectAltName = @alt_names
+keyUsage = critical, digitalSignature, keyEncipherment
+extendedKeyUsage = serverAuth
+
+[ alt_names ]
+# Populated dynamically by scripts
+

@@ -1,0 +1,12 @@
+.include configs/common.cnf
+
+[ server_cert ]
+# Extensions found in the "X509v3 extensions" section
+basicConstraints       = CA:FALSE
+nsCertType             = server
+nsComment              = "OpenSSL Generated Server Certificate"
+subjectKeyIdentifier   = hash
+authorityKeyIdentifier = keyid,issuer:always
+keyUsage               = critical, digitalSignature, keyEncipherment
+extendedKeyUsage       = serverAuth
+

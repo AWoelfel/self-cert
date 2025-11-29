@@ -1,0 +1,11 @@
+.include configs/req.cnf
+
+[req_distinguished_name]
+CN=app0.mgmt.local
+
+[alt_names]
+DNS.1=app0
+DNS.2=app0.mgmt.local
+DNS.3=localhost
+DNS.4=127.0.0.1
+

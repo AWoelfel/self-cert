@@ -1,0 +1,18 @@
+
+[ req ]
+default_bits        = 2048
+distinguished_name  = req_distinguished_name
+string_mask         = utf8only
+default_md          = sha256
+prompt              = no
+
+
+# COMMON AUTHORITY SETTINGS
+[ req_distinguished_name ]
+C            = DE
+ST           = ST
+L            = L
+O            = O
+OU           = U
+emailAddress = Email
+
